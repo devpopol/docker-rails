@@ -18,7 +18,7 @@ RUN gem update --system
 # Bundler
 RUN jruby -S gem install bundler --version=1.6.2
 # Rails
-RUN jruby -S gem install rails --version=4.1.1
+RUN jruby -S gem install rails --version=4.0.3
 # Jetty
 ENV JETTY_VERSION 9.2.3.v20140905
 ADD http://eclipse.org/downloads/download.php?file=/jetty/stable-9/dist/jetty-distribution-$JETTY_VERSION.tar.gz&r=1 /opt/jetty.tar.gz
