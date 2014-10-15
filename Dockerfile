@@ -3,7 +3,11 @@ MAINTAINER Stephen Paul Suarez <devpopol@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 # Java & JRuby
-RUN apt-get update && apt-get install -y --no-install-recommends openjdk-7-jre-headless tar curl && apt-get autoremove -y && apt-get clean
+RUN apt-get update && apt-get upgrade -y && \
+  apt-get install -y tar curl git-core && \
+  apt-get install -y --no-install-recommends openjdk-7-jdk && \
+  apt-get autoremove -y && apt-get clean
+ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 ENV JRUBY_VERSION 1.7.16
 RUN curl http://jruby.org.s3.amazonaws.com/downloads/$JRUBY_VERSION/jruby-bin-$JRUBY_VERSION.tar.gz | tar xz -C /opt
 ENV PATH /opt/jruby-$JRUBY_VERSION/bin:$PATH
